@@ -5,13 +5,13 @@ phases:
     commands:
       - aws --version
       - echo Logging in to Amazon ECR...
-      - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin <YOUR_ECR_URI>
+      - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin <791560328288.dkr.ecr.eu-west-1.amazonaws.com/getting-started>
   build:
     commands:
       - echo Building the Docker image...
       - docker build -t getting-started .
-      - docker tag getting-started:latest <YOUR_ECR_URI>:latest
+      - docker tag getting-started:latest <791560328288.dkr.ecr.eu-west-1.amazonaws.com/getting-started>:latest
   post_build:
     commands:
       - echo Pushing the Docker image...
-      - docker push <YOUR_ECR_URI>:latest
+      - docker push <791560328288.dkr.ecr.eu-west-1.amazonaws.com/getting-started>:latest
